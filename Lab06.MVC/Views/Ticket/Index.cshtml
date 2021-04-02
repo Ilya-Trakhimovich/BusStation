@@ -1,0 +1,62 @@
+﻿@model List<TicketViewModel>
+
+<table class="table" aria-describedby="users tickets">
+    <thead>
+        <tr>
+            <th scope="col">City</th>
+            <th scope="col">Start date</th>
+            <th scope="col">Start</th>
+            <th scope="col">Finish date</th>
+            <th scope="col">Finish</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Status</th>
+            <th scope="col">Cancel</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            if (t.IsCanceled)
+            {
+                <tr style="background-color: lightcoral;">
+                    <td>@t.City</td>
+                    <td>@Html.DisplayFor(x => t.StartDate)</td>
+                    <td>@Html.DisplayFor(x => t.StartTime)</td>
+                    <td>@Html.DisplayFor(x => t.FinishDate)</td>
+                    <td>@Html.DisplayFor(x => t.FinishTime)</td>
+                    <td>@t.Cost</td>
+                    <td>Canceled</td>
+                    <td></td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>@t.City</td>
+                    <td>@Html.DisplayFor(x => t.StartDate)</td>
+                    <td>@Html.DisplayFor(x => t.StartTime)</td>
+                    <td>@Html.DisplayFor(x => t.FinishDate)</td>
+                    <td>@Html.DisplayFor(x => t.FinishTime)</td>
+                    <td>@t.Cost</td>
+                    @if ((t.StartDate + t.StartTime) > DateTime.UtcNow)
+                    {
+                        <td>Active</td>
+                        <td>
+                            <form asp-action="CancelTicket" asp-controller="Ticket" asp-route-ticketId="@t.Id" method="post">
+                                <input type="submit" name="Cancel" value="Cancel" />
+                            </form>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>The flight is over</td>
+                        <td></td>
+                    }
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index" asp-controller="Home">back to main menu</a>
+</div>

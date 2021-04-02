@@ -1,0 +1,52 @@
+﻿@model AddTripPageViewModel
+@{
+    ViewData["Title"] = "Add flight";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="text-danger" asp-validation-summary="All"></div>
+            <form asp-action="AddTrip" asp-controller="Trip" method="post">
+                <div class="form-group">
+                    <label asp-for="@Model.Trip.StartDate"></label>
+                    <div><span asp-validation-for="@Model.Trip.StartDate" class="text-danger"></span></div>
+                    <input asp-for="@Model.Trip.StartDate" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Trip.StartTrip"></label>
+                    <div><span asp-validation-for="@Model.Trip.StartTrip" class="text-danger"></span></div>
+                    <input asp-for="@Model.Trip.StartTrip" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Trip.FinishDate"></label>
+                    <div><span asp-validation-for="@Model.Trip.FinishDate" class="text-danger"></span></div>
+                    <input asp-for="@Model.Trip.FinishDate" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Trip.FinishTip"></label>
+                    <div><span asp-validation-for="@Model.Trip.FinishTip" class="text-danger"></span></div>
+                    <input asp-for="@Model.Trip.FinishTip" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Trip.CityId" style="padding-right: 20px;"></label>
+                    @Html.DropDownList("cityId", Model.Cities as SelectList, new { @class = "btn btn-info dropdown-toggle" })
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Trip.BusId" style="padding-right: 20px;"></label>
+                    @Html.DropDownList("busId", Model.Buses as SelectList, new { @class = "btn btn-info dropdown-toggle" })
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Trip.Cost"></label>
+                    <div><span asp-validation-for="@Model.Trip.Cost" class="text-danger"></span></div>
+                    <input asp-for="@Model.Trip.Cost" class="form-control" />
+                </div>
+                <button class="btn btn-primary" type="submit">Add flight</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <a asp-action="Index" asp-controller="Home">back to main menu</a>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=37f0c778_002Dff91_002D4810_002Da029_002D199d4a920c90/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Create_ExecutedSuccessful" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::7060DD24-5F05-4066-B208-39ADD55D8A0E::.NETCoreApp,Version=v3.1::Lab07.DAL.IntegrationTests.BaseRepositoryTest.BaseRepoTest.Create_ExecutedSuccessful&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DF7A3AD1-EDDC-436D-BBF5-C9FBA8F9DC7B::.NETCoreApp,Version=v3.1::Lab07.UnitTesting.BLL.Test.ServicesTest.BusServiceTest.GetAll_DbHasBuses_ReturnBusDtoList&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DF7A3AD1-EDDC-436D-BBF5-C9FBA8F9DC7B::.NETCoreApp,Version=v3.1::Lab07.UnitTesting.BLL.Test.ServicesTest.AppUserServiceTest.GetCountActiveUSerTickets_UserDoesntExistInDb_ReturnZeroTickets&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DF7A3AD1-EDDC-436D-BBF5-C9FBA8F9DC7B::.NETCoreApp,Version=v3.1::Lab07.UnitTesting.BLL.Test.ServicesTest.AppUserServiceTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7060DD24-5F05-4066-B208-39ADD55D8A0E::.NETCoreApp,Version=v3.1::Lab07.DAL.IntegrationTests.BaseRepositoryTest.BaseRepoTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::5A800077-59E7-4C0B-B9DB-01E5F692EE1B::.NETCoreApp,Version=v3.1::Lab07.IntegrationTests.ControllerIT.CityControllerIntTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::5A800077-59E7-4C0B-B9DB-01E5F692EE1B::.NETCoreApp,Version=v3.1::Lab07.IntegrationTests.ControllerIT.HomeControllerIntTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::6381BB96-CDDA-490E-A28E-69634CEFABF4::.NETCoreApp,Version=v3.1::Lab07.UITest.UITests.UILogiPageTest.LoginPageTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DF7A3AD1-EDDC-436D-BBF5-C9FBA8F9DC7B::.NETCoreApp,Version=v3.1::Lab07.UnitTesting.BLL.Test.ServicesTest.BusServiceTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DF7A3AD1-EDDC-436D-BBF5-C9FBA8F9DC7B::.NETCoreApp,Version=v3.1::Lab07.UnitTesting.BLL.Test.ServicesTest.CityServiceTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DF7A3AD1-EDDC-436D-BBF5-C9FBA8F9DC7B::.NETCoreApp,Version=v3.1::Lab07.UnitTesting.BLL.Test.ServicesTest.TicketServiceTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DF7A3AD1-EDDC-436D-BBF5-C9FBA8F9DC7B::.NETCoreApp,Version=v3.1::Lab07.UnitTesting.BLL.Test.ServicesTest.TripServiceTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

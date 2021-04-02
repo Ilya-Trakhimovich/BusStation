@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DAL.Test\**" />
+    <Compile Remove="PL.Test\**" />
+    <EmbeddedResource Remove="DAL.Test\**" />
+    <EmbeddedResource Remove="PL.Test\**" />
+    <None Remove="DAL.Test\**" />
+    <None Remove="PL.Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lab06.BL\Lab06.BL.csproj" />
+    <ProjectReference Include="..\Lab06.DAL\Lab06.DAL.csproj" />
+    <ProjectReference Include="..\Lab06.MVC\Lab06.MVC.csproj" />
+  </ItemGroup>
+
+</Project>

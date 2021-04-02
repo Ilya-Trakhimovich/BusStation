@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+@inject SignInManager<ApplicationUser> signManager;
+@inject IHttpContextAccessor httpContextAccessor;
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/ErrorStyle.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</head>
+
+<body class="m-1 p-1">
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark" aria-label="page navigation">
+        <span class="navbar-brand mb-0 h1">HAPPY JOURNEY</span>
+        <div class="collapse navbar-collapse">
+            @if (User.IsInRole("admin"))
+            {
+                <nav class="nav" aria-label="navigation">
+                    <a asp-action="AddCity" asp-controller="City" class="btn btn-light" style="margin-left: 40px; margin-right: 30px;">Add city</a>
+                </nav>
+                <nav class="nav" aria-label="navigation">
+                    <a asp-action="AddTrip" asp-controller="Trip" class="btn btn-light" style="margin-right: 30px;">Add flight</a>
+                </nav>
+                <nav class="nav" aria-label="navigation">
+                    <a asp-action="Statistics" asp-controller="Statistics" class="btn btn-light">Statistics</a>
+                </nav>
+            }
+            <ul class="navbar-nav ml-auto">
+                @if (signManager.IsSignedIn(User))
+                {
+                    <li class="nav-item" style="padding-right: 10px;">
+                        <span>User: @User.Identity.Name</span>
+                    </li>
+                    <li class="nav-item" style="padding-right: 10px;">
+                        <a asp-action="Index" asp-controller="Ticket" style="color: black;">
+                            <span>
+                                Tickets: @await Component.InvokeAsync("Ticket", new { userId = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value) })
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item" style="padding-left: 20px">
+                        <span><a class="btn btn-sm btn-primary" asp-action="Logout" asp-controller="Account">Log out</a></span>
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+    <div class="alert alert-info" role="alert">
+        @TempData["OperationMessage"]
+    </div>
+    @RenderBody()
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

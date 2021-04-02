@@ -1,0 +1,109 @@
+﻿@model MainPageViewModel
+
+@{
+    ViewData["Title"] = "bus station \"HAPPY JOURNEY\"";
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <form asp-controller="Home" asp-action="Index" method="post" id="button1">
+            <div class="row justify-content-center" style="margin-bottom: 10px;">
+                <div class="col-md-4">
+                    @Html.DropDownList("cityId", Model.Cities as SelectList, new { @class = "btn btn-secondary dropdown-toggle" })
+                </div>
+                <div class=" col-md-5">
+                    <input asp-for="@Model.StartDate" class="form-control" value="@Model.StartDate.ToString("yyyy-MM-dd")" />
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-dark" type="submit">Find</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table class="table table-striped" aria-describedby="current date trips">
+        <thead>
+            <tr>
+                <th scope="col">Start date</th>
+                <th scope="col">Start</th>
+                <th scope="col">Finish date</th>
+                <th scope="col">Finish</th>
+                <th scope="col">Free seats</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Buy ticket</th>
+                <th scope="col">Status</th>
+                @if (User.IsInRole("admin"))
+                {
+                    <th scope="col">Update trip</th>
+                    <th scope="col">Cancel trip</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in Model.Trips)
+            {
+                @if (!t.IsCanceled)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => t.StartDate)</td>
+                        <td>@Html.DisplayFor(x => t.StartTime)</td>
+                        <td>@Html.DisplayFor(x => t.FinishDate)</td>
+                        <td>@Html.DisplayFor(x => t.FinishTime)</td>
+                        <td>@t.FreeSeats</td>
+                        <td>@t.Cost</td>
+                        <td>
+                            @if (t.FreeSeats == 0)
+                            {
+                                <span>Sold out</span>
+                            }
+                            else
+                            {
+                                <a asp-action="BuyTicket" asp-controller="Ticket" asp-route-tripId="@t.Id" method="post" class="btn btn-info">Buy</a>
+                            }
+                        </td>
+                        <td><span>Active</span></td>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <td>
+                                <a asp-action="UpdateTrip" asp-controller="Trip" asp-route-tripId="@t.Id" class="btn btn-info">Update</a>
+                            </td>
+                            <td>
+                                <form asp-action="CancelTrip" asp-controller="Trip" asp-route-tripId="@t.Id" method="post">
+                                    <input type="submit" name="Cancel" value="Cancel" class="btn btn-danger" />
+                                </form>
+                            </td>
+                        }
+                    </tr>
+                }
+                else
+                {
+                    <tr style="background-color: lightcoral;">
+                        <td>@Html.DisplayFor(x => t.StartDate)</td>
+                        <td>@Html.DisplayFor(x => t.StartTime)</td>
+                        <td>@Html.DisplayFor(x => t.FinishDate)</td>
+                        <td>@Html.DisplayFor(x => t.FinishTime)</td>
+                        <td>@t.FreeSeats</td>
+                        <td>@t.Cost</td>
+                        <td></td>
+                        <td><span>Canceled</span></td>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <td></td>
+                            <td></td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@*@section Scripts
+    {
+        <script>
+            $(document).ready(function () {
+                $("#button1").click(function () {
+                    $("#div1").load("/Home/GetPerson");
+                });
+            });
+        </script>
+    }*@
